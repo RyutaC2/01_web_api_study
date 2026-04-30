@@ -1,0 +1,66 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Node / Next.js
+node_modules/
+.next/
+.next/cache
+out/
+build/
+dist/
+
+# Next.js environment files
+.env
+.env.local
+.env.*.local
+
+# Go
+# バイナリ出力
+/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# テスト・カバレッジ
+*.test
+coverage.out
+*.coverprofile
+
+# Go vendor (必要なら管理する)
+vendor/
+
+# Go module cache (通常はワークスペース外だが念のため)
+GOPATH/pkg/mod/
+
+# Docker / deploy
+docker-compose.override.yml
+*.local.env
+
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.user
+*.swp
+*.tmp
+
+# Build artifacts / temporary
+*.out
+*.pid
+*.seed
+*.sqlite3
+*.db
+
+# Others
+.envrc
+.env.*.local
