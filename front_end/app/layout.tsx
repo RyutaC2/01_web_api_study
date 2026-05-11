@@ -1,6 +1,6 @@
 import React from "react";
 import "./globals.css";
-import MenuIcon from '../public/menu.svg';
+import MenuButton from './components/MenuButton/MenuButton';
 
 export default function RootLayout({
   children,
@@ -14,7 +14,7 @@ export default function RootLayout({
       </head>
       <body>
         <header>
-          <button className="menu-icon"></button>
+          <MenuButton onClick={() => console.log('clicked!')} />
           <h1 className="title">Hello WebSite !!</h1>
         </header>
         <div>
