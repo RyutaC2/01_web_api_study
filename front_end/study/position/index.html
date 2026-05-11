@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Study - 各position値の挙動</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="page-header">
+        <h1>Position プロパティの挙動比較</h1>
+        <p>各position値の違いを視覚的に理解するサンプルです。スクロールして挙動の違いを見てください。</p>
+    </header>
+
+    <!-- static -->
+    <section class="section">
+        <h2>1. position: static（デフォルト）</h2>
+        <p class="description">普通のflow。上から下へ流れていく。何も指定しないのと同じ。</p>
+        <div class="demo-container">
+            <div class="demo-content">
+                <div class="box box-static">box 1 (static)</div>
+                <div class="box box-static">box 2 (static)</div>
+                <div class="box box-static">box 3 (static)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- relative -->
+    <section class="section">
+        <h2>2. position: relative</h2>
+        <p class="description">元の位置から相対的に移動。元の領域は占有したまま。</p>
+        <div class="demo-container">
+            <div class="demo-content">
+                <div class="box box-relative-normal">box 1 (relative, 動かない)</div>
+                <div class="box box-relative-moved">box 2 (relative, left: 50px; top: 20px;)</div>
+                <div class="box box-relative-normal">box 3 (relative, 動かない)</div>
+                <div class="note">※ box 2 は移動したが、元の領域（グレーエリア）は占有したまま</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- absolute -->
+    <section class="section">
+        <h2>3. position: absolute</h2>
+        <p class="description">DOM flow から外れて、親（親にposition: relativeが必要）を基準に配置される。</p>
+        <div class="demo-container">
+            <div class="demo-content demo-content-absolute">
+                <div class="box box-static">box 1 (static)</div>
+                <div class="box box-absolute-1">box 2 (absolute, top: 30px; left: 50px;)</div>
+                <div class="box box-static">box 3 (static)</div>
+                <div class="note">※ box 2 はflow から外れているため、スペースを占有しない</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- fixed -->
+    <section class="section">
+        <h2>4. position: fixed</h2>
+        <p class="description">ページ全体を基準に配置。スクロールしても位置が変わらない。</p>
+        <div class="demo-container">
+            <div class="demo-content">
+                <div class="box box-static">scrollable content 1</div>
+                <div class="box box-static">scrollable content 2</div>
+                <div class="box box-static">scrollable content 3</div>
+                <div class="box box-static">scrollable content 4</div>
+                <div class="box box-static">scrollable content 5</div>
+                <div class="note">↓ 下のボックスはfixedです。このセクションをスクロールしても位置は変わりません ↓</div>
+            </div>
+        </div>
+        <div class="box box-fixed">Fixed Box (bottom-right)</div>
+    </section>
+
+    <!-- sticky -->
+    <section class="section">
+        <h2>5. position: sticky</h2>
+        <p class="description">最初はnormal flow。スクロール時に指定位置に「くっついて」固定される。</p>
+        <div class="demo-container">
+            <div class="demo-content demo-sticky-container">
+                <div class="sticky-header">STICKY HEADER (top: 0;)</div>
+                <div class="box box-static">content 1</div>
+                <div class="box box-static">content 2</div>
+                <div class="box box-static">content 3</div>
+                <div class="box box-static">content 4</div>
+                <div class="box box-static">content 5</div>
+                <div class="box box-static">content 6</div>
+                <div class="note">↑ 上のヘッダーをスクロールで「くっつく」様子を見てください ↑</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 比較表 -->
+    <section class="section">
+        <h2>まとめ</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Flow から外れるか</th>
+                    <th>基準位置</th>
+                    <th>用途</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>static</td>
+                    <td>いいえ</td>
+                    <td>-</td>
+                    <td>通常のレイアウト</td>
+                </tr>
+                <tr>
+                    <td>relative</td>
+                    <td>いいえ</td>
+                    <td>元の位置から相対的</td>
+                    <td>親の基準位置設定、微調整</td>
+                </tr>
+                <tr>
+                    <td>absolute</td>
+                    <td>はい</td>
+                    <td>親（relative/absolute）</td>
+                    <td>モーダル、ツールチップ</td>
+                </tr>
+                <tr>
+                    <td>fixed</td>
+                    <td>はい</td>
+                    <td>viewport（画面）</td>
+                    <td>navbar、サイドバー</td>
+                </tr>
+                <tr>
+                    <td>sticky</td>
+                    <td>部分的</td>
+                    <td>最初は親、スクロール時は viewport</td>
+                    <td>テーブルヘッダー、セクションヘッダー</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer class="page-footer">
+        <p>各セクションをスクロールして、position値の違いを体験してみてください！</p>
+    </footer>
+</body>
+</html>
