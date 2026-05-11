@@ -1,12 +1,17 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import "./globals.css";
-import MenuButton from './components/MenuButton/MenuButton';
+import MenuButton from "./components/MenuButton/MenuButton";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 export default function RootLayout({
   children,
 }:{
   children: React.ReactNode;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <html lang="ja">
       <head>
@@ -14,21 +19,14 @@ export default function RootLayout({
       </head>
       <body>
         <header>
-          <MenuButton onClick={() => console.log('clicked!')} />
+          <MenuButton
+            isOn={isOpen}
+            onClick={() => setIsOpen(!isOpen)}
+          />
           <h1 className="title">Hello WebSite !!</h1>
         </header>
-        <div>
-          <nav>
-            <ul>
-              <li><button>$ cd ~</button></li>
-              <li><button>$ whoami</button></li>
-              <li><button>$ echo $HOBBY</button></li>
-              <li><button>$ cat .my-tech</button></li>
-              <li><button>$ ssh ryuta@contact</button></li>
-            </ul>
-          </nav>
-          <main>{children}</main>
-        </div>
+        <Sidebar isOpen={isOpen} />
+        <main>{children}</main>
         <footer>
           <small>© 2026 You are an idiot!!</small>
         </footer>

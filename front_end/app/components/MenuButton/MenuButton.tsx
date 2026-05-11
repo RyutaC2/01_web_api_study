@@ -1,16 +1,17 @@
-'use client';
+"use client";
 
-import React from 'react';
-import './MenuButton.css';
+import React from "react";
+import "./MenuButton.css";
 
 interface MenuButtonProps {
+    isOn: boolean;
     onClick?: () => void;
 }
 
-export default function MenuButton({ onClick }: MenuButtonProps) {
+export default function MenuButton({ isOn, onClick }: MenuButtonProps) {
     return (
         <button 
-            className="menu-button"
+            className={`menu-button ${isOn ? "active" : ""}`}
             onClick={onClick}
         />
     )

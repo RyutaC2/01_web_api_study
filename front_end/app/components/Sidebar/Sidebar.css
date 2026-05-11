@@ -1,0 +1,41 @@
+.sidebar {
+  position: fixed;
+  left: -200px;
+  top: 0;
+  z-index: 1000;
+  width: 200px;
+  background: #242424;
+  min-height: 100vh;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 100px;
+}
+
+@media (max-width: 600px) {
+  .sidebar ul {
+    margin-top: 70px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+  background: #656565;
+  }
+}
+
+nav button {
+  background: #00000000;
+  color: #fff;
+  width: 100%;
+  min-height: 40px;
+  text-align: left;
+  padding-left: 20px;
+}
