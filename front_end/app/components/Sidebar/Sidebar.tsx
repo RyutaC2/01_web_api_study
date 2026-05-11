@@ -10,12 +10,12 @@ interface SidebarProps {
 export default function Sidebar({isOpen}: SidebarProps) {
     return (
         <nav className={`sidebar ${isOpen ? "open" : ""}`}>
-            <ul>
-                <li><button>$ cd ~</button></li>
-                <li><button>$ whoami</button></li>
-                <li><button>$ echo $HOBBY</button></li>
-                <li><button>$ cat .my-tech</button></li>
-                <li><button>$ ssh ryuta@contact</button></li>
+            <ul className="sidebar-list">
+                <li><button>cd ~</button></li>
+                <li><button>whoami</button></li>
+                <li><button>echo $HOBBY</button></li>
+                <li><button>cat .my-tech</button></li>
+                <li><button>ssh ryuta@contact</button></li>
             </ul>
         </nav>
     );
