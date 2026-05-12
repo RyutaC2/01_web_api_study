@@ -1,10 +1,10 @@
-.menu-button {
+.color-mode-button {
+    cursor: pointer;
     margin-top: auto;
     margin-bottom: auto;
     width: 40px;
     height: 40px;
     display: inline-block;
-    background-image: url("/menu-white.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -13,21 +13,25 @@
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.menu-button:hover {
+.color-mode-button:hover {
     transform: scale(1.2);
 }
 
-.menu-button:active {
+.color-mode-button:active {
     transform: scale(1);
 }
 
 @media (max-width: 600px) {
-    .menu-button {
+    .color-mode-button {
     width: 24px;
     height: 24px;
     }
 }
 
-.active {
-    background-image: url("/close-white.svg");
+.light {
+    background-image: url("/light_mode.svg");
+}
+
+.dark {
+    background-image: url("/dark_mode.svg");
 }

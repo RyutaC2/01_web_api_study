@@ -1,4 +1,5 @@
 .menu-button {
+    cursor: pointer;
     margin-top: auto;
     margin-bottom: auto;
     width: 40px;

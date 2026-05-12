@@ -5,14 +5,14 @@ import "./ColorMode.css";
 
 interface ColorModeProps {
     isDark: boolean;
-    onToggle?: () => void;
+    onClick?: () => void;
 }
 
-export default function ColorMode({ isDark, onToggle }: ColorModeProps) {
+export default function ColorMode({ isDark, onClick }: ColorModeProps) {
     return (
         <button
             className={`color-mode-button ${isDark ? "dark" : "light"}`}
-            onToggle={onToggle}
+            onClick={onClick}
         />
     )
 }

@@ -1,16 +1,15 @@
 @import "tailwindcss";
 
-:root {
+.theme-light {
   --background: #e2e2e2;
   --foreground: #242424;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #242424;
-    --foreground: #e2e2e2;
-  }
+.theme-dark {
+  --background: #101010;
+  --foreground: #e2e2e2;
 }
+
 
 html {
   background-color: #333;
@@ -64,6 +63,11 @@ main {
 h1.title {
   font-size: 2.0rem;
   text-align: center;
+  user-select: none;
+}
+
+small {
+  user-select: none;
 }
 
 @media (max-width: 600px) {
