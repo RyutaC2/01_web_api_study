@@ -5,7 +5,7 @@
     width: 40px;
     height: 40px;
     display: inline-block;
-    background-image: url("/menu-white.svg");
+    background-image: url("/components/MenuButton/menu-white.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -30,5 +30,5 @@
 }
 
 .active {
-    background-image: url("/close-white.svg");
+    background-image: url("/components/MenuButton/close-white.svg");
 }
