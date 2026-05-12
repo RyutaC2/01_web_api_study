@@ -24,9 +24,15 @@ jobs:
       
       - name: Install Dependencies
         run: npm ci
+        working-directory: front_end
+      
+      - name: Run Lint
+        run: npm run lint
+        working-directory: front_end
       
       - name: Build
         run: npm run build
+        working-directory: front_end
   
   # backend:
   #   if: contains(github.event.head_commit.message, '[back]')
@@ -44,6 +50,8 @@ jobs:
       
   #     - name: Install Dependencies
   #       run: go mod download
+  #       working-directory: front_end
       
   #     - name: Build
   #       run: go build -o myapp .
+  #       working-directory: back_end
