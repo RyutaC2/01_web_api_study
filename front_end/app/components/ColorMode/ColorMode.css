@@ -21,7 +21,7 @@
     transform: scale(1);
 }
 
-@media (width >= 600px) {
+@media (width <= 600px) {
     .color-mode-button {
     width: 24px;
     height: 24px;
