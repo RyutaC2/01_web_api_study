@@ -1,11 +1,11 @@
 .sidebar {
   position: fixed;
-  left: -200px;
   top: 0;
+  left: -200px;
   z-index: 1000;
   width: 200px;
-  background: #242424;
   min-height: 100vh;
+  background: #242424;
   transition: left 0.3s ease-in-out;
 }
 
@@ -14,12 +14,12 @@
 }
 
 .sidebar ul {
-  list-style: none;
-  padding: 0;
   margin-top: 95px;
+  padding: 0;
+  list-style: none;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .sidebar ul {
     margin-top: 65px;
   }
@@ -30,13 +30,13 @@ background: #656565;
 }
 
 .sidebar-list button {
-  cursor: pointer;
-  background: #00000000;
-  color: #fff;
   width: 100%;
   min-height: 40px;
-  text-align: left;
   padding-left: 20px;
+  color: #fff;
+  text-align: left;
+  background: #0000;
+  cursor: pointer;
 }
 
 .sidebar-list button:hover {
@@ -44,8 +44,8 @@ background: #656565;
 }
 
 .sidebar-list button::before {
-  content: "$ ";
   color: transparent;
+  content: "$ ";
 }
 
 .sidebar-list button:hover::before {
