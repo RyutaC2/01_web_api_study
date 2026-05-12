@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./globals.css";
 import ColorMode from "./components/ColorMode/ColorMode";
 import MenuButton from "./components/MenuButton/MenuButton";
@@ -12,10 +12,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const [isDark, setIsDark] = useState(false);
 
+  useEffect(() => {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setIsDark(prefersDark);
+  }, []);
   return (
-    <html lang="ja">
+    <html lang="ja" className={isDark ? "theme-dark" : "theme-light"}>
       <head>
         <title>my-data-repository</title>
       </head>
@@ -28,13 +32,13 @@ export default function RootLayout({
           <h1 className="title">Hello WebSite !!</h1>
           <ColorMode
             isDark={isDark}
-            onToggle={() => setIsDark(prev => !prev)}
+            onClick={() => setIsDark(!isDark)}
           />
         </header>
         <Sidebar isOpen={isOpen} />
         <main>{children}</main>
         <footer>
-          <small>© 2026 You are an idiot!!</small>
+          <small>© 2026 RyutaC2. All rights reserved.</small>
         </footer>
       </body>
     </html>
