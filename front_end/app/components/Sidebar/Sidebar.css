@@ -25,13 +25,12 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .sidebar {
-  background: #656565;
-  }
+.theme-dark .sidebar {
+background: #656565;
 }
 
 .sidebar-list button {
+  cursor: pointer;
   background: #00000000;
   color: #fff;
   width: 100%;
