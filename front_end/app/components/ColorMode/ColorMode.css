@@ -29,9 +29,9 @@
 }
 
 .light {
-    background-image: url("/light_mode.svg");
+    background-image: url("/components/ColorMode/light_mode.svg");
 }
 
 .dark {
-    background-image: url("/dark_mode.svg");
+    background-image: url("/components/ColorMode/dark_mode.svg");
 }
