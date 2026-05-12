@@ -2,11 +2,11 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
     paths:
       - 'front_end/**'
   pull_request:
-    branches: [main]
+    branches: [main, develop]
     paths:
       - 'front_end/**'
 
