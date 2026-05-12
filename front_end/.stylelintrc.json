@@ -2,6 +2,7 @@
     "extends": "stylelint-config-standard",
     "plugins": ["stylelint-order"],
     "rules": {
+        "import-notation": "string",
     "order/properties-order": [
         [
             "position",
