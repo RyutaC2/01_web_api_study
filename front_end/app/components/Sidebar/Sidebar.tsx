@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import "./Sidebar.css";
+import "./sidebar.module.css";
 
 interface SidebarProps {
     isOpen: boolean;

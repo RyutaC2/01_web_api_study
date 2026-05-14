@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import "./ColorMode.css";
+import "./color-mode.module.css";
 
 interface ColorModeProps {
     isDark: boolean;

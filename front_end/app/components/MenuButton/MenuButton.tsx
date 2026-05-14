@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import "./MenuButton.css";
+import "./menu-button.module.css";
 
 interface MenuButtonProps {
     isOn: boolean;
