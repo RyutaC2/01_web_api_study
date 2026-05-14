@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import "./ColorMode.css";
+import styles from "./color-mode.module.css";
 
 interface ColorModeProps {
     isDark: boolean;
@@ -11,8 +11,10 @@ interface ColorModeProps {
 export default function ColorMode({ isDark, onClick }: ColorModeProps) {
     return (
         <button
-            className={`color-mode-button ${isDark ? "dark" : "light"}`}
+            className={`${styles["color-mode-button"]} ${isDark ? styles.dark : styles.light}`}
             onClick={onClick}
+            aria-label="ダークモード切り替え"
+            aria-pressed={isDark}
         />
     )
 }

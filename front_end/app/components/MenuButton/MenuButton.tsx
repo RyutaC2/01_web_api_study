@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import "./MenuButton.css";
+import styles from "./menu-button.module.css";
 
 interface MenuButtonProps {
     isOn: boolean;
@@ -11,8 +11,10 @@ interface MenuButtonProps {
 export default function MenuButton({ isOn, onClick }: MenuButtonProps) {
     return (
         <button 
-            className={`menu-button ${isOn ? "active" : ""}`}
+            className={`${styles["menu-button"]} ${isOn ? styles.active : ""}`}
             onClick={onClick}
+            aria-label={isOn ? "メニューを閉じる" : "メニューを開く"}
+            aria-pressed={isOn}
         />
     )
 }

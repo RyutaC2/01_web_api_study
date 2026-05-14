@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import "./Sidebar.css";
+import styles from "./sidebar.module.css";
 
 interface SidebarProps {
     isOpen: boolean;
@@ -9,8 +9,8 @@ interface SidebarProps {
 
 export default function Sidebar({isOpen}: SidebarProps) {
     return (
-        <nav className={`sidebar ${isOpen ? "open" : ""}`}>
-            <ul className="sidebar-list">
+        <nav className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
+            <ul className={styles["sidebar-list"]}>
                 <li><button>cd ~</button></li>
                 <li><button>whoami</button></li>
                 <li><button>echo $HOBBY</button></li>
