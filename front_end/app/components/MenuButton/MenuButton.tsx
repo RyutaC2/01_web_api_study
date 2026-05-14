@@ -13,6 +13,8 @@ export default function MenuButton({ isOn, onClick }: MenuButtonProps) {
         <button 
             className={`${styles["menu-button"]} ${isOn ? styles.active : ""}`}
             onClick={onClick}
+            aria-label={isOn ? "メニューを閉じる" : "メニューを開く"}
+            aria-pressed={isOn}
         />
     )
 }
