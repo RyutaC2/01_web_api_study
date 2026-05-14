@@ -13,6 +13,8 @@ export default function ColorMode({ isDark, onClick }: ColorModeProps) {
         <button
             className={`${styles["color-mode-button"]} ${isDark ? styles.dark : styles.light}`}
             onClick={onClick}
+            aria-label="ダークモード切り替え"
+            aria-pressed={isDark}
         />
     )
 }
