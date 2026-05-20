@@ -1,4 +1,4 @@
-export default function AboutPage() {
+export default function ContactPage() {
     return (
         <div>
             <h1>連絡フォームページです！！！！</h1>
