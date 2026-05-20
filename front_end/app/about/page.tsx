@@ -1,7 +1,7 @@
 export default function AboutPage() {
     return (
         <div>
-            <h1>Aboutページです！！！！</h1>
+            <h1>プロフィールページです！！！！</h1>
             <p>あいうえお</p>
             <p>かきくけこ</p>
             <p>さしすせそ</p>
