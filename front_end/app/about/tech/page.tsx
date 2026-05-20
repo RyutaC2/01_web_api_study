@@ -1,4 +1,4 @@
-export default function AboutPage() {
+export default function TechPage() {
     return (
         <div>
             <h1>てｃｈページです！！！！</h1>
