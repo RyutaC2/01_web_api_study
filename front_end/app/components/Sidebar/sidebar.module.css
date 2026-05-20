@@ -2,10 +2,9 @@
   position: fixed;
   top: 0;
   left: -200px;
-  z-index: 1000;
+  z-index: 5;
   width: 200px;
   min-height: 100vh;
-  background: #242424;
   transition: left 0.3s ease-in-out;
 }
 
@@ -14,19 +13,8 @@
 }
 
 .sidebar ul {
-  margin-top: 95px;
   padding: 0;
   list-style: none;
-}
-
-@media (width <= 600px) {
-  .sidebar ul {
-    margin-top: 65px;
-  }
-}
-
-.theme-dark .sidebar {
-background: #656565;
 }
 
 .sidebar-list button {

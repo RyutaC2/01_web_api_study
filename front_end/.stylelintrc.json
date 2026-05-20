@@ -3,6 +3,12 @@
     "plugins": ["stylelint-order"],
     "rules": {
         "import-notation": "string",
+        "at-rule-no-unknown": [true, {
+            "ignoreAtRules": ["custom-variant", "theme", "utility", "variant", "source", "plugin"]
+        }],
+        "at-rule-empty-line-before": ["always", {
+            "ignoreAtRules": ["import", "custom-variant"]
+        }],
     "order/properties-order": [
         [
             "position",
