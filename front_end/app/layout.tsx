@@ -33,7 +33,7 @@ export default function RootLayout({
           />
           <button
             onClick={() => router.push("/")}
-            className="mr-auto ml-auto text-2xl sm:text-4xl cursor-pointer"
+            className="mr-auto ml-auto text-2xl sm:text-4xl cursor-pointer select-none"
           >
             Hello WebSite !!
           </button>
@@ -43,7 +43,7 @@ export default function RootLayout({
           />
         </header>
         <Sidebar isOpen={isOpen} />
-        <main className="p-6 sm:pl-[30%] sm:pr-[30%] select-none">
+        <main className="p-6 sm:pl-[30%] sm:pr-[30%]">
           {children}
         </main>
         <footer className="z-10 mt-auto p-6 text-white text-center bg-[#333]">
