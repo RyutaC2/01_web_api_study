@@ -9,8 +9,8 @@ interface SidebarProps {
 
 export default function Sidebar({isOpen}: SidebarProps) {
     return (
-        <nav className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
-            <ul className={styles["sidebar-list"]}>
+        <nav className={`${styles.sidebar} ${isOpen ? styles.open : ""} bg-[#242424] dark:bg-[#656565]`}>
+            <ul className={`${styles["sidebar-list"]} mt-16 sm:mt-24`}>
                 <li><button>cd ~</button></li>
                 <li><button>whoami</button></li>
                 <li><button>echo $HOBBY</button></li>

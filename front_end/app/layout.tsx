@@ -18,28 +18,33 @@ export default function RootLayout({
     }
     return false;
   });
-
   return (
-    <html lang="ja" className={isDark ? "theme-dark" : "theme-light"}>
+    <html lang="ja" className={`${isDark ? "dark" : ""} bg-[#333]`}>
       <head>
         <title>my-data-repository</title>
       </head>
-      <body>
-        <header>
+      <body className="flex flex-col min-h-screen h-full font-sans text-[#101010] dark:text-[#e2e2e2] bg-[#e2e2e2] dark:bg-[#101010]">
+        <header className="z-10 h-16 sm:h-24 flex p-4 sm:p-6 text-[#fff] bg-[#333]">
           <MenuButton
             isOn={isOpen}
             onClick={() => setIsOpen(!isOpen)}
           />
-          <h1 className="title">Hello WebSite !!</h1>
+          <button className="mr-auto ml-auto text-2xl sm:text-4xl cursor-pointer">
+            Hello WebSite !!
+          </button>
           <ColorMode
             isDark={isDark}
             onClick={() => setIsDark(!isDark)}
           />
         </header>
         <Sidebar isOpen={isOpen} />
-        <main>{children}</main>
-        <footer>
-          <small>© 2026 RyutaC2. All rights reserved.</small>
+        <main className="pl-auto pr-auto p-6 sm:pl-[30%] sm:pr-[30%] text-[center] select-none">
+          {children}
+        </main>
+        <footer className="z-10 mt-auto p-6 text-[#fff] text-center bg-[#333]">
+          <small className="select-none">
+            © 2026 RyutaC2. All rights reserved.
+          </small>
         </footer>
       </body>
     </html>
