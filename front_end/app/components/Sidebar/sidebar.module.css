@@ -13,29 +13,26 @@
 }
 
 .sidebar ul {
-  padding: 0;
   list-style: none;
 }
 
-.sidebar-list button {
-  width: 100%;
-  min-height: 40px;
-  padding-left: 20px;
+.sidebar-list li {
+  padding: 10px 5px;
   color: #fff;
   text-align: left;
   background: #0000;
   cursor: pointer;
 }
 
-.sidebar-list button:hover {
+.sidebar-list li:hover {
   background: #3f3f3f;
 }
 
-.sidebar-list button::before {
+.sidebar-list li::before {
   color: transparent;
   content: "$ ";
 }
 
-.sidebar-list button:hover::before {
+.sidebar-list li:hover::before {
   color: #fff;
 }
