@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import "./globals.css";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import ColorMode from "./components/ColorMode/ColorMode";
 import MenuButton from "./components/MenuButton/MenuButton";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -12,7 +12,6 @@ export default function RootLayout({
 }:{
   children: React.ReactNode;
 }) {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== "undefined") {
@@ -31,12 +30,9 @@ export default function RootLayout({
             isOn={isOpen}
             onClick={() => setIsOpen(!isOpen)}
           />
-          <button
-            onClick={() => router.push("/")}
-            className="mr-auto ml-auto text-2xl sm:text-4xl cursor-pointer select-none"
-          >
+          <Link href="/" className="mr-auto ml-auto text-2xl sm:text-4xl cursor-pointer select-none">
             Hello WebSite !!
-          </button>
+          </Link>
           <ColorMode
             isDark={isDark}
             onClick={() => setIsDark(!isDark)}

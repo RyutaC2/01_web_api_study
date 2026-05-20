@@ -16,7 +16,7 @@
   list-style: none;
 }
 
-.sidebar-list li {
+.sidebar-list a {
   padding: 10px 5px;
   color: #fff;
   text-align: left;
@@ -24,15 +24,15 @@
   cursor: pointer;
 }
 
-.sidebar-list li:hover {
+.sidebar-list a:hover {
   background: #3f3f3f;
 }
 
-.sidebar-list li::before {
+.sidebar-list a::before {
   color: transparent;
   content: "$ ";
 }
 
-.sidebar-list li:hover::before {
+.sidebar-list a:hover::before {
   color: #fff;
 }
