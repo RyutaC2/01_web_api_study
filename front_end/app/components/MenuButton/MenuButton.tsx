@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import styles from "./menu-button.module.css";
 
 interface MenuButtonProps {
