@@ -13,7 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
+
+const [isDark, setIsDark] = useState(() => {
     if (typeof window !== "undefined") {
       return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
@@ -38,7 +39,14 @@ export default function RootLayout({
             onClick={() => setIsDark(!isDark)}
           />
         </header>
-        <Sidebar isOpen={isOpen} />
+        <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        {isOpen && (
+          <button
+            className="overlay"
+            onClick={() => setIsOpen(false)}
+            aria-label="サイドバーを閉じる"
+          />
+        )}
         <main className="p-6 sm:pl-[30%] sm:pr-[30%]">
           {children}
         </main>
