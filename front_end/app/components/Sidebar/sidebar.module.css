@@ -28,6 +28,10 @@
   background: #3f3f3f;
 }
 
+.sidebar-list a:active {
+  background: #585858;
+}
+
 .sidebar-list a::before {
   color: transparent;
   content: "$ ";

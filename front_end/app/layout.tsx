@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import "./globals.css";
 import Link from "next/link";
 import ColorMode from "./components/ColorMode/ColorMode";
@@ -13,6 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const pathname = usePathname();
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== "undefined") {
       return window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -39,6 +46,7 @@ export default function RootLayout({
           />
         </header>
         <Sidebar isOpen={isOpen} />
+        {isOpen && <div className="overlay" onClick={() => setIsOpen(false)} />}
         <main className="p-6 sm:pl-[30%] sm:pr-[30%]">
           {children}
         </main>
