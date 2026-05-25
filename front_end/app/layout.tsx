@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
-const [isDark, setIsDark] = useState(() => {
+  const [isDark, setIsDark] = useState(() => {
     if (typeof window !== "undefined") {
       return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
@@ -53,7 +53,7 @@ const [isDark, setIsDark] = useState(() => {
             aria-label="サイドバーを閉じる"
           />
         )}
-        <main className="p-6 md:pl-[30%] md:pr-[30%]">
+        <main className="p-6 md:pl-[15%] md:pr-[15%] lg:pl-[30%] lg:pr-[30%] ">
           {children}
         </main>
         <footer className="z-10 mt-auto p-6 text-white text-center bg-[#333]">

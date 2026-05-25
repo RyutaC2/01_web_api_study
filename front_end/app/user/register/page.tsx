@@ -1,10 +1,10 @@
 "use client";
 
-    import { z } from "zod";
-    import { useForm } from "react-hook-form";
-    import { zodResolver } from "@hookform/resolvers/zod";
-    import InputField from "../../components/UI/InputField";
-    import Link from "next/link";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import InputField from "../../components/UI/InputField";
+import Link from "next/link";
 
 const registerSchema = z.object({
     username: z.string()
@@ -37,7 +37,7 @@ export default function Register() {
     }
 
     return (
-        <div className="rounded-2xl bg-[#d7d7d7] dark:bg-[#222222] px-6 py-10 m-4">
+        <div className="rounded-2xl bg-[#d7d7d7] dark:bg-[#222222] md:px-6 py-10 md:mx-4 my-4">
             <h1 className="text-center text-2xl p-4">ユーザー新規登録</h1>
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -80,7 +80,7 @@ export default function Register() {
                     >ログインの方はこちら</Link>
                     <button
                         type="submit"
-                        className="text-1xl cursor-pointer px-4 py-2 rounded-md text-white font-boid bg-blue-600 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-600 transition"
+                        className="text-1xl cursor-pointer px-4 py-2 rounded-md text-white font-bold bg-blue-600 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-600 transition"
                     >登録</button>
                 </div>
             </form>
