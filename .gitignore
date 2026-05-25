@@ -36,10 +36,10 @@ dist/
 coverage.out
 *.coverprofile
 
-# Go vendor (必要なら管理する)
+# Go vendor
 vendor/
 
-# Go module cache (通常はワークスペース外だが念のため)
+# Go module cache
 GOPATH/pkg/mod/
 
 # Docker / deploy

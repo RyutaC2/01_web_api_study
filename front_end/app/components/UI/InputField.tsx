@@ -1,7 +1,9 @@
+import { UseFormRegister, FieldValues } from "react-hook-form"
+
 type InputFieldProps = {
     label: string
     type?: string
-    register: any
+    register: UseFormRegister<FieldValues>
     name: string
     error?: string
     placeholder?: string

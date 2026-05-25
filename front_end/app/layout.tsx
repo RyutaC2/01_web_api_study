@@ -34,7 +34,7 @@ export default function RootLayout({
               onClick={() => setIsOpen(!isOpen)}
             />
           </div>
-          <Link href="/" className="mr-auto ml-auto text-2xl md:text-4xl cursor-pointer select-none">
+          <Link href="/" className="mr-auto ml-auto text-[clamp(1rem,5.8vw,1.5rem)] md:text-4xl cursor-pointer select-none min-w-0">
             Hello WebSite !!
           </Link>
           <div className="flex items-center justify-end gap-4">
@@ -53,7 +53,7 @@ export default function RootLayout({
             aria-label="サイドバーを閉じる"
           />
         )}
-        <main className="p-6 md:pl-[15%] md:pr-[15%] lg:pl-[30%] lg:pr-[30%] ">
+        <main className="p-6 md:pl-[10%] md:pr-[10%] lg:pl-[20%] lg:pr-[20%] xl:pl-[30%] xl:pr-[30%] ">
           {children}
         </main>
         <footer className="z-10 mt-auto p-6 text-white text-center bg-[#333]">
