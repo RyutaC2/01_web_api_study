@@ -74,7 +74,10 @@ export default function Register() {
                     placeholder="パスワードを再入力してください"
                 />
                 <div className="flex justify-end items-center gap-8">
-                    <Link href="" className="text-blue-600 hover:text-blue-800 dark:text-blue-800 dark:hover:text-blue-600 transition">ログインの方はこちら</Link>
+                    <Link
+                        href="/user/login"
+                        className="text-blue-600 hover:text-blue-800 dark:text-blue-800 dark:hover:text-blue-600 transition"
+                    >ログインの方はこちら</Link>
                     <button
                         type="submit"
                         className="text-1xl cursor-pointer px-4 py-2 rounded-md text-white font-boid bg-blue-600 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-600 transition"

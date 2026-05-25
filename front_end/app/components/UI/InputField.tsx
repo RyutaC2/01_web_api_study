@@ -24,7 +24,7 @@ export default function InputField({
                 placeholder={placeholder}
                 className={"border-2 rounded-md border-[#cacaca] dark:border-[#2f2f2f] p-2"}
             />
-            {error && <p className="text-red">{error}</p>}
+            {error && <p className="text-red-500">{error}</p>}
         </div>
     )
 }
