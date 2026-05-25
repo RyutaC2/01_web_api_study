@@ -6,6 +6,7 @@ import Link from "next/link";
 import ColorMode from "./components/ColorMode/ColorMode";
 import MenuButton from "./components/MenuButton/MenuButton";
 import Sidebar from "./components/Sidebar/Sidebar";
+import AccountButton from "./components/AccountButton/AccountButton";
 
 export default function RootLayout({
   children,
@@ -26,18 +27,23 @@ const [isDark, setIsDark] = useState(() => {
         <title>my-data-repository</title>
       </head>
       <body className="flex flex-col min-h-screen h-full font-sans text-[#101010] dark:text-[#e2e2e2] bg-[#e2e2e2] dark:bg-[#101010]">
-        <header className="z-10 h-16 md:h-24 flex p-4 md:p-6 text-white bg-[#333]">
-          <MenuButton
-            isOn={isOpen}
-            onClick={() => setIsOpen(!isOpen)}
-          />
+        <header className="z-10 h-16 md:h-24 grid grid-cols-[1fr_2fr_1fr] items-center p-4 md:p-6 text-white bg-[#333]">
+          <div className="flex items-center">
+            <MenuButton
+              isOn={isOpen}
+              onClick={() => setIsOpen(!isOpen)}
+            />
+          </div>
           <Link href="/" className="mr-auto ml-auto text-2xl md:text-4xl cursor-pointer select-none">
             Hello WebSite !!
           </Link>
-          <ColorMode
-            isDark={isDark}
-            onClick={() => setIsDark(!isDark)}
-          />
+          <div className="flex items-center justify-end gap-4">
+            <AccountButton/>
+            <ColorMode
+              isDark={isDark}
+              onClick={() => setIsDark(!isDark)}
+            />
+          </div>
         </header>
         <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)} />
         {isOpen && (
