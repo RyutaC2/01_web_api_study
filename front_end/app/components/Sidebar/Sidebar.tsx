@@ -11,7 +11,7 @@ interface SidebarProps {
 export default function Sidebar({isOpen, onClose}: SidebarProps) {
     return (
         <nav className={`${styles.sidebar} ${isOpen ? styles.open : ""} bg-[#242424] dark:bg-[#656565]`}>
-            <ul className={`${styles["sidebar-list"]} mt-16 sm:mt-24`}>
+            <ul className={`${styles["sidebar-list"]} mt-16 md:mt-24`}>
                 <li><Link href="/" onClick={onClose} className="block w-full h-full">cd ~</Link></li>
                 <li><Link href="/about" onClick={onClose} className="block w-full h-full">whoami</Link></li>
                 <li><Link href="/about/hobby" onClick={onClose} className="block w-full h-full">echo $HOBBY</Link></li>

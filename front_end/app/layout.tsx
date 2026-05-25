@@ -26,12 +26,12 @@ const [isDark, setIsDark] = useState(() => {
         <title>my-data-repository</title>
       </head>
       <body className="flex flex-col min-h-screen h-full font-sans text-[#101010] dark:text-[#e2e2e2] bg-[#e2e2e2] dark:bg-[#101010]">
-        <header className="z-10 h-16 sm:h-24 flex p-4 sm:p-6 text-white bg-[#333]">
+        <header className="z-10 h-16 md:h-24 flex p-4 md:p-6 text-white bg-[#333]">
           <MenuButton
             isOn={isOpen}
             onClick={() => setIsOpen(!isOpen)}
           />
-          <Link href="/" className="mr-auto ml-auto text-2xl sm:text-4xl cursor-pointer select-none">
+          <Link href="/" className="mr-auto ml-auto text-2xl md:text-4xl cursor-pointer select-none">
             Hello WebSite !!
           </Link>
           <ColorMode
@@ -47,7 +47,7 @@ const [isDark, setIsDark] = useState(() => {
             aria-label="サイドバーを閉じる"
           />
         )}
-        <main className="p-6 sm:pl-[30%] sm:pr-[30%]">
+        <main className="p-6 md:pl-[30%] md:pr-[30%]">
           {children}
         </main>
         <footer className="z-10 mt-auto p-6 text-white text-center bg-[#333]">
