@@ -16,7 +16,7 @@ const registerSchema = z.object({
     password: z.string()
     .min(8, { message: "パスワードは8文字以上で入力してください。"})
     .max(20, { message: "パスワードは20文字以下で入力してください。"})
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&-_])[A-Za-z\d@$!%*?&-_]+$/, { message: "パスワードは大文字、小文字、数字、記号を含めてください。" }),
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-])[A-Za-z\d@$!%*?&_-]+$/, { message: "パスワードは大文字、小文字、数字、記号を含めてください。" }),
     confirmPassword: z.string(),
 }).refine(data => data.password === data.confirmPassword,
     {
