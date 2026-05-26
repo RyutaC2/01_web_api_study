@@ -80,7 +80,7 @@ export default function Register() {
                     >ログインの方はこちら</Link>
                     <button
                         type="submit"
-                        className="text-1xl cursor-pointer px-4 py-2 rounded-md text-white font-bold bg-blue-600 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-600 transition"
+                        className="text-xl cursor-pointer px-4 py-2 rounded-md text-white font-bold bg-blue-600 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-600 transition"
                     >登録</button>
                 </div>
             </form>
