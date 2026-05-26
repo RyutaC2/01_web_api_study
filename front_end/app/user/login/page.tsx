@@ -60,7 +60,7 @@ export default function Login() {
                     >新規登録の方はこちら</Link>
                     <button
                         type="submit"
-                        className="text-1xl cursor-pointer px-4 py-2 rounded-md text-white font-bold bg-blue-600 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-600 transition"
+                        className="text-xl cursor-pointer px-4 py-2 rounded-md text-white font-bold bg-blue-600 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-600 transition"
                     >ログイン</button>
                 </div>
             </form>
