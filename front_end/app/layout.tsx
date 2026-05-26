@@ -53,7 +53,7 @@ export default function RootLayout({
             aria-label="サイドバーを閉じる"
           />
         )}
-        <main className="p-6 md:pl-[10%] md:pr-[10%] lg:pl-[20%] lg:pr-[20%] xl:pl-[30%] xl:pr-[30%] ">
+        <main className="p-3 md:p-6 md:pl-[10%] md:pr-[10%] lg:pl-[20%] lg:pr-[20%] xl:pl-[30%] xl:pr-[30%]">
           {children}
         </main>
         <footer className="z-10 mt-auto p-6 text-white text-center bg-[#333]">

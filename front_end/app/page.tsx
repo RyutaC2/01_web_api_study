@@ -26,8 +26,8 @@ export default function HomePage() {
     return (
         <div className="flex justify-center min-h-screen">
             <div className="max-w-150">
-                <h1 className="text-center text-[clamp(2rem,4vw,3rem)] whitespace-nowrap mt-10 px-4 min-[400px]:px-10">圧倒的に簡易的な、<br/>ログインシステムはこちら。</h1>
-                <h2 className="text-center text-[clamp(1rem,2vw,1.35rem)] whitespace-nowrap mt-5 mb-10 px-4 min-[400px]:px-10">フロントエンドはNext.js、バックエンドはGoで構築しています。このページはGitHubのホームページを真似しました。下の登録/ログインシステムはReactHookFormとZodを使っています。</h2>
+                <h1 className="text-center text-[clamp(2rem,4vw,3rem)] mt-10 px-4 min-[400px]:px-10">圧倒的に簡易的な、<br/>ログインシステムはこちら。</h1>
+                <h2 className="text-center text-[clamp(1rem,2vw,1.35rem)] mt-5 mb-10 px-4 min-[400px]:px-10">フロントエンドはNext.js、バックエンドはGoで構築しています。このページはGitHubのホームページを真似しました。下の登録/ログインシステムはReactHookFormとZodを使っています。</h2>
                 {errors.email && (
                     <p className="text-red-500 text-sm text-center mb-1">
                         {errors.email.message}
@@ -37,10 +37,10 @@ export default function HomePage() {
                     onSubmit={handleSubmit(onSubmit)}
                     className="flex flex-col md:flex-row md:items-center justify-center gap-2"
                 >
-                    <div className="w-full flex-4  flex flex-col md:flex-row rounded-md bg-white dark:bg-gray-700 p-1 gap-2">
+                    <div className="w-full flex-4 min-w-0 flex flex-col md:flex-row rounded-md bg-white dark:bg-gray-700 p-1 gap-2">
                         <input
                             {...register("email")}
-                            className="flex-1 rounded-md py-2 px-2"
+                            className="flex-1 min-w-0 rounded-md py-2 px-2"
                             placeholder="メールアドレスを入力"
                         />
                         <button
