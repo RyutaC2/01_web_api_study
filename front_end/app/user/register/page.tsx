@@ -37,8 +37,8 @@ export default function Register() {
     }
 
     return (
-        <div className="rounded-2xl bg-[#d7d7d7] dark:bg-[#222222] md:px-6 py-10 md:mx-4 my-4">
-            <h1 className="text-center text-2xl p-4">ユーザー新規登録</h1>
+        <div className="rounded-2xl bg-[#ffffff] dark:bg-[#303030] md:px-6 py-10 md:mx-4 my-4">
+            <h1 className="text-center text-4xl p-4">ユーザー新規登録</h1>
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col gap-2 p-4"
