@@ -20,14 +20,14 @@ const loginSchema = z.object({
     password: z.string().min(1, { message: "パスワードを入力してください。" }),
     })
 
-type RegisterInput = z.infer<typeof loginSchema>
+type LoginInput = z.infer<typeof loginSchema>
 
 export default function Login() {
 
-    const { register, handleSubmit, formState: { errors } } = useForm<RegisterInput>({
+    const { register, handleSubmit, formState: { errors } } = useForm<LoginInput>({
         resolver: zodResolver(loginSchema),
     })
-    const onSubmit = (data: RegisterInput) => {
+    const onSubmit = (data: LoginInput) => {
         console.log(data)
     }
 
