@@ -33,7 +33,7 @@ export default function InputField<T extends FieldValues>({
                         autoComplete: "off",
                         autoCorrect: "off",
                         autoCapitalize: "off",
-                        spellCheck: "false",
+                        spellCheck: false,
                     }
                 : {})}
             />
