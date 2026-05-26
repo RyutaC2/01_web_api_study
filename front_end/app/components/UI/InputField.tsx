@@ -26,7 +26,7 @@ export default function InputField<T extends FieldValues>({
                 placeholder={placeholder}
                 className={
                     "border-2 rounded-md border-[#cacaca] dark:border-[#7c7c7c] p-2" +
-                    (type === "password" ? " no-copy-paste" : "")
+                    (type === "password" ? " select-none" : "")
                 }
                 {...(type === "password"
                     ? {
