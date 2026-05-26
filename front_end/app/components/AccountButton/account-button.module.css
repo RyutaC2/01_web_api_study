@@ -1,11 +1,11 @@
-.menu-button {
+.account-button {
     display: inline-block;
     width: 40px;
     height: 40px;
     margin-top: auto;
     margin-bottom: auto;
     background-color: transparent;
-    background-image: url("/components/MenuButton/menu-white.svg");
+    background-image: url("/components/AccountButton/login.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -14,21 +14,21 @@
     cursor: pointer;
 }
 
-.menu-button:hover {
+.account-button:hover {
     transform: scale(1.2);
 }
 
-.menu-button:active {
+.account-button:active {
     transform: scale(1);
 }
 
-@media (width <= 768px) {
-    .menu-button {
-    width: 24px;
-    height: 24px;
-    }
+.logged-in {
+    background-image: url("/components/AccountButton/account.svg");
 }
 
-.active {
-    background-image: url("/components/MenuButton/close-white.svg");
+@media (width <= 768px) {
+    .account-button {
+        width: 24px;
+        height: 24px;
+    }
 }
