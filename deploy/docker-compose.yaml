@@ -4,9 +4,41 @@ services:
       context: ../
       dockerfile: deploy/frontend.Dockerfile
     ports:
-        - "3000:3000"
+      - "3000:3000"
     volumes:
-        - ../front_end:/app
-        - /app/node_modules
+      - ../front_end:/app
+      - /app/node_modules
     environment:
-        - NODE_ENV=development
+      - NODE_ENV=development
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      - backend
+  
+  backend:
+    build:
+      context: ../
+      dockerfile: deploy/backend.Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=appdb
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=appdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
