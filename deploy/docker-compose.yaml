@@ -4,9 +4,35 @@ services:
       context: ../
       dockerfile: deploy/frontend.Dockerfile
     ports:
-        - "3000:3000"
+      - "3000:3000"
     volumes:
-        - ../front_end:/app
-        - /app/node_modules
+      - ../front_end:/app
+      - /app/node_modules
     environment:
-        - NODE_ENV=development
+      - NODE_ENV=development
+      - BACKEND_URL=http://backend:8080
+    depends_on:
+      - backend
+  
+  backend:
+    build:
+      context: ../
+      dockerfile: deploy/backend.Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
