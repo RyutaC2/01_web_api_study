@@ -8,7 +8,7 @@ COPY back_end/. .
 RUN go build -o /app/server .
 
 
-FROM alpine:latest
+FROM alpine:3.22
 
 RUN adduser -D appuser
 USER appuser
