@@ -5,7 +5,7 @@ COPY back_end/go.mod back_end/go.sum ./
 RUN go mod download
 
 COPY back_end/. .
-RUN go build -o /app/server .
+RUN go build -o ./server .
 
 
 FROM alpine:3.22
@@ -13,7 +13,7 @@ FROM alpine:3.22
 RUN adduser -D appuser
 USER appuser
 
-COPY --from=builder /app/server /app/server
+COPY --from=builder /build/server /app/server
 
 EXPOSE 8080
 CMD ["/app/server"]
