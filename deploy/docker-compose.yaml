@@ -10,7 +10,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - BACKEND_URL=http://backend:8000
+      - BACKEND_URL=http://backend:8080
     depends_on:
       - backend
   
@@ -20,12 +20,8 @@ services:
       dockerfile: deploy/backend.Dockerfile
     ports:
       - "8080:8080"
-    environment:
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_USER=user
-      - DB_PASSWORD=password
-      - DB_NAME=appdb
+    env_file:
+      - .env
     depends_on:
       - db
 
@@ -33,10 +29,8 @@ services:
     image: postgres:16
     ports:
       - "5432:5432"
-    environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=appdb
+    env_file:
+      - .env
     volumes:
       - pgdata:/var/lib/postgresql/data
 
