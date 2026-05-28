@@ -1,0 +1,40 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'back_end/**'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'back_end/**'
+
+jobs:
+  backend:
+    name: Backend Build and Test
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.26.3"
+          cache: true
+          cache-dependency-path: back_end/go.sum
+      
+      - name: Run Lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          working-directory: back_end
+      
+      - name: Build
+        run: go build ./...
+        working-directory: back_end
+      
+      - name: Run Test
+        run: go test ./...
+        working-directory: back_end
