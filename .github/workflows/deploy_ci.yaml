@@ -38,7 +38,7 @@ jobs:
       
       - name: Wait for DB to be ready
         run: |
-          timeout 60 bash -C '
+          timeout 60 bash -c '
             until docker compose -f deploy/docker-compose.yaml exec -T db pg_isready; do
               echo "Waiting for database..."
               sleep 2
