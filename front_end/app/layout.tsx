@@ -7,6 +7,7 @@ import ColorMode from "./components/ColorMode/ColorMode";
 import MenuButton from "./components/MenuButton/MenuButton";
 import Sidebar from "./components/Sidebar/Sidebar";
 import AccountButton from "./components/AccountButton/AccountButton";
+import AIChat from "./components/AIChat/AIChat";
 
 export default function RootLayout({
   children,
@@ -22,7 +23,7 @@ export default function RootLayout({
     return false;
   });
   return (
-    <html lang="ja" className={isDark ? "dark" : "light"}>
+    <html lang="ja" className={`${isDark ? "dark" : "light"} bg-[#333] scroll-smooth antialiased`}>
       <head>
         <title>my-data-repository</title>
       </head>
@@ -56,6 +57,7 @@ export default function RootLayout({
         <main className="p-3 md:p-6 md:pl-[10%] md:pr-[10%] lg:pl-[20%] lg:pr-[20%] xl:pl-[30%] xl:pr-[30%]">
           {children}
         </main>
+        <AIChat/>
         <footer className="z-10 mt-auto p-6 text-white text-center bg-[#333]">
           <small className="select-none">
             © 2026 RyutaC2. All rights reserved.
