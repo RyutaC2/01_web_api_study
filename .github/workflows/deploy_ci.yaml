@@ -34,17 +34,19 @@ jobs:
         run: docker compose -f deploy/docker-compose.yaml build
       
       - name: Start docker-compose
-        run: docker compose -f deploy/docker-compose.yaml up -d
+        run: docker compose -f deploy/docker-compose.yaml up -d --wait
       
       - name: Wait for DB to be ready
         run: |
-          until docker compose -f deploy/docker-compose.yaml exec -T db pg_isready; do
-            echo "Waiting for database..."
-            sleep 2
-          done
+          timeout 60 bash -C '
+            until docker compose -f deploy/docker-compose.yaml exec -T db pg_isready; do
+              echo "Waiting for database..."
+              sleep 2
+            done
+          '
       
       - name: Check container health
-        run: docker compose -f deploy/docker-compose.yaml ps
+        run: test $(docker compose -f deploy/docker-compose.yaml ps --status exited -q | wc -l) -eq 0
       
       - name: Teardown
         if: always()
