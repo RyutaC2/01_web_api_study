@@ -1,0 +1,53 @@
+name: Deploy CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'deploy/**'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'deploy/**'
+
+jobs:
+  deploy:
+    name: Deploy Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "DB_HOST=db" >> deploy/.env
+          echo "DB_PORT=5432" >> deploy/.env
+          echo "DB_USER=testuser" >> deploy/.env
+          echo "DB_PASSWORD=testpassword" >> deploy/.env
+          echo "DB_NAME=testdb" >> deploy/.env
+          echo "POSTGRES_USER=testuser" >> deploy/.env
+          echo "POSTGRES_PASSWORD=testpassword" >> deploy/.env
+          echo "POSTGRES_DB=testdb" >> deploy/.env
+      
+      - name: Build docker-compose
+        run: docker compose -f deploy/docker-compose.yaml build
+      
+      - name: Start docker-compose
+        run: docker compose -f deploy/docker-compose.yaml up -d --wait
+      
+      - name: Wait for DB to be ready
+        run: |
+          timeout 60 bash -c '
+            until docker compose -f deploy/docker-compose.yaml exec -T db pg_isready; do
+              echo "Waiting for database..."
+              sleep 2
+            done
+          '
+      
+      - name: Check container health
+        run: test $(docker compose -f deploy/docker-compose.yaml ps --status exited -q | wc -l) -eq 0
+      
+      - name: Teardown
+        if: always()
+        run: docker compose -f deploy/docker-compose.yaml down -v
