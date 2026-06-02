@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./color-mode.module.css";
+import Tooltip from "../UI/Tooltip";
 
 interface ColorModeProps {
     isDark: boolean;
@@ -9,11 +10,13 @@ interface ColorModeProps {
 
 export default function ColorMode({ isDark, onClick }: ColorModeProps) {
     return (
-        <button
-            className={`${styles["color-mode-button"]} ${isDark ? styles.dark : styles.light}`}
-            onClick={onClick}
-            aria-label="ダークモード切り替え"
-            aria-pressed={isDark}
-        />
+        <Tooltip text="カラーモード切り替え" position="bottom-left">
+            <button
+                className={`${styles["color-mode-button"]} ${isDark ? styles.dark : styles.light}`}
+                onClick={onClick}
+                aria-label="ダークモード切り替え"
+                aria-pressed={isDark}
+            />
+        </Tooltip>
     )
 }

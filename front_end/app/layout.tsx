@@ -57,7 +57,7 @@ export default function RootLayout({
         <main className="p-3 md:p-6 md:pl-[10%] md:pr-[10%] lg:pl-[20%] lg:pr-[20%] xl:pl-[30%] xl:pr-[30%]">
           {children}
         </main>
-        <AIChat/>
+          <AIChat/>
         <footer className="z-10 mt-auto p-6 text-white text-center bg-[#333]">
           <small className="select-none">
             © 2026 RyutaC2. All rights reserved.
