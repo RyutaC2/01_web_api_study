@@ -20,7 +20,7 @@ export default function Tooltip({ text, children, className, position }: Tooltip
 
     const [isVisible, setIsVisible] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const HandleMouseEnter = () => {
+    const handleMouseEnter = () => {
         timerRef.current = setTimeout(() => {
             setIsVisible(true);
         }, 750);
@@ -35,8 +35,9 @@ export default function Tooltip({ text, children, className, position }: Tooltip
     return (
         <div
             className={`relative inline-block z-50 ${className ?? ""}`}
-            onMouseEnter={HandleMouseEnter}
+            onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+        >
         >
             {children}
             {isVisible && (
