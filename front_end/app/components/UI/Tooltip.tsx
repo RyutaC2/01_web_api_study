@@ -13,11 +13,11 @@ type Position = "top-right" | "top-left" | "bottom-right" | "bottom-left";
 export default function Tooltip({ text, children, className, position }: TooltipProps) {
     const [isHovered, setIsHovered] = useState(false);
     const positionClass: Record<Position, string> = {
-        "top-right": "bottom-1/2 left-full -translate-x-1/5 mb-2",
-        "top-left": "bottom-1/2 right-full translate-x-1/5 mb-2",
-        "bottom-right": "top-1/2 left-full -translate-x-1/5 mt-2",
-        "bottom-left": "top-1/2 right-full translate-x-1/5 mt-2",
-    }
+        "top-right": "bottom-1/2 left-full -translate-x-[20%] mb-2",
+        "top-left": "bottom-1/2 right-full translate-x-[20%] mb-2",
+        "bottom-right": "top-1/2 left-full -translate-x-[20%] mt-2",
+        "bottom-left": "top-1/2 right-full translate-x-[20%] mt-2",
+    };
 
     const [isVisible, setIsVisible] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
