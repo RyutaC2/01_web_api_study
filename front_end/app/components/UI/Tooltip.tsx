@@ -11,7 +11,6 @@ type TooltipProps = {
 type Position = "top-right" | "top-left" | "bottom-right" | "bottom-left";
 
 export default function Tooltip({ text, children, className, position }: TooltipProps) {
-    const [isHovered, setIsHovered] = useState(false);
     const positionClass: Record<Position, string> = {
         "top-right": "bottom-1/2 left-full -translate-x-[20%] mb-2",
         "top-left": "bottom-1/2 right-full translate-x-[20%] mb-2",
