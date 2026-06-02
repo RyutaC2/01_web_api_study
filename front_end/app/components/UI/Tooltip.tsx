@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 type TooltipProps = {
     text: string;
@@ -20,6 +20,13 @@ export default function Tooltip({ text, children, className, position }: Tooltip
 
     const [isVisible, setIsVisible] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    useEffect(() => {
+        return () => {
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
+        };
+    }, []);
     const handleMouseEnter = () => {
         timerRef.current = setTimeout(() => {
             setIsVisible(true);
@@ -37,7 +44,6 @@ export default function Tooltip({ text, children, className, position }: Tooltip
             className={`relative inline-block z-50 ${className ?? ""}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-        >
         >
             {children}
             {isVisible && (
