@@ -4,6 +4,6 @@ type LinkIconProps = {
 
 export default function LinkIcon({ className }: LinkIconProps) {
     return (
-        <img src="/UI/link_icon.svg" alt="リンクアイコン" className={`inline-block ${className || ''}`}/>
+        <img src="/UI/link_icon.svg" alt="" aria-hidden="true" className={`inline-block ${className || ''}`}/>
     );
 }
