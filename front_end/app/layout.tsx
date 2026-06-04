@@ -8,6 +8,7 @@ import MenuButton from "./components/MenuButton/MenuButton";
 import Sidebar from "./components/Sidebar/Sidebar";
 import AccountButton from "./components/AccountButton/AccountButton";
 import AIChat from "./components/AIChat/AIChat";
+import JavaScriptDisabled from "./components/JavaScriptDisabled/JavaScriptDisabled";
 
 export default function RootLayout({
   children,
@@ -58,6 +59,7 @@ export default function RootLayout({
           {children}
         </main>
           <AIChat/>
+          <JavaScriptDisabled/>
         <footer className="z-10 mt-auto p-6 text-white text-center bg-[#333]">
           <small className="select-none">
             © 2026 RyutaC2. All rights reserved.
