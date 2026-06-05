@@ -23,18 +23,18 @@ jobs:
         run: |
           echo "DB_HOST=db" >> deploy/.env
           echo "DB_PORT=5432" >> deploy/.env
-          echo "DB_USER=testuser" >> deploy/.env
-          echo "DB_PASSWORD=testpassword" >> deploy/.env
-          echo "DB_NAME=testdb" >> deploy/.env
-          echo "POSTGRES_USER=testuser" >> deploy/.env
-          echo "POSTGRES_PASSWORD=testpassword" >> deploy/.env
-          echo "POSTGRES_DB=testdb" >> deploy/.env
+          echo "DB_USER=user" >> deploy/.env
+          echo "DB_PASSWORD=password" >> deploy/.env
+          echo "DB_NAME=appdb" >> deploy/.env
+          echo "POSTGRES_USER=user" >> deploy/.env
+          echo "POSTGRES_PASSWORD=password" >> deploy/.env
+          echo "POSTGRES_DB=appdb" >> deploy/.env
       
       - name: Build docker-compose
         run: docker compose -f deploy/docker-compose.yaml build
       
       - name: Start docker-compose
-        run: docker compose -f deploy/docker-compose.yaml up -d --wait
+        run: docker compose -f deploy/docker-compose.yaml up -d --wait backend db
       
       - name: Wait for DB to be ready
         run: |
