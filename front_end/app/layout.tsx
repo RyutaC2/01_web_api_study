@@ -24,7 +24,7 @@ export default function RootLayout({
     return false;
   });
   return (
-    <html lang="ja" className={`${isDark ? "dark" : "light"} bg-[#333] scroll-smooth antialiased`}>
+    <html lang="ja" className={`${isDark ? "dark" : "light"} bg-[#333] scroll-smooth antialiased`} data-scroll-behavior="smooth">
       <head>
         <title>my-data-repository</title>
       </head>
