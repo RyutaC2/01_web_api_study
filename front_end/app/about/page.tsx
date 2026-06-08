@@ -79,59 +79,61 @@ export default function AboutPage() {
                     e.preventDefault();
                     handleSearch();
                 }}
-                className="flex flex-col font-mono gap-2 bg-[#282c34] border-2 border-[#1d1f23] rounded-xl p-4 pb-10 mt-8"
+                className="flex flex-col font-mono gap-2 bg-[#282c34] border-2 border-[#1d1f23] rounded-xl mt-8"
             >
-                <p className="text-white whitespace-normal sm:whitespace-pre">
-                    ~ $ <span className="text-green-700">whoami</span><br/>
-                    RyutaC2<br/><br/>
-                    ~ $ <span className="text-green-700">finger</span> RyutaC2<br/>
-                    Login: RyutaC2                  Name: Ryuta Iguchi<br/>
-                    Directory: /home/RyutaC2        Shell: /bin/zsh<br/>
-                    On since Thu June 25 23:06 (JST) on :0 from :0 (messages off)<br/>
-                    No mail.<br/>
-                    No Plan.<br/>
-                </p>
-                <div className="flex">
-                    <p className="text-white">
-                        ~ $ <span className="text-green-700">finger</span>
-                    </p>
-                    <input
-                        type="text"
-                        value={username}
-                        placeholder="ユーザー名を入力してください"
-                        onChange={(e) => setUsername(e.target.value)}
-                        className="flex-1 text-white h-full focus:outline-none pl-2"
-                    />
-                </div>
-                {userData && userData.login !== "RyutaC2" && notFound === false && (
+                <label className="w-full h-full cursor-text p-4 pb-10 ">
                     <p className="text-white whitespace-normal sm:whitespace-pre">
-                        Login: {userData.login}                  Name: {userData.name || userData.login}<br/>
-                        Directory: /home/{userData.login}        Shell: /bin/bash<br/>
-                        On since {userData ? new Date(userData.created_at).toLocaleString("en-US", {
-                            weekday: "short",
-                            month: "long",
-                            day: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            hour12: false,
-                        }).replace(/,/g, "").replace(/ at/g, "") : "N/A"}<br/>
-                        (JST) on :pts/0 from :185.199.108.153 (messages off)<br/>
-                    {userData?.email ? `Mail: ${userData.email}` : "No mail."}<br/>
-                    No Plan.<br/>
+                        ~ $ <span className="text-green-700">whoami</span><br/>
+                        RyutaC2<br/><br/>
+                        ~ $ <span className="text-green-700">finger</span> RyutaC2<br/>
+                        Login: RyutaC2                  Name: Ryuta Iguchi<br/>
+                        Directory: /home/RyutaC2        Shell: /bin/zsh<br/>
+                        On since Thu June 25 23:06 (JST) on :0 from :0 (messages off)<br/>
+                        No mail.<br/>
+                        No Plan.<br/><br/>
                     </p>
-                )}
-                {notFound && (
-                    <p className="text-red-500">
-                        ユーザーが見つかりませんでした。ユーザー名を確認してください。
-                    </p>
-                )}
+                    <div className="flex items-center">
+                        <p className="text-white">
+                            ~ $ <span className="text-green-700">finger</span>
+                        </p>
+                        <input
+                            type="text"
+                            value={username}
+                            placeholder="ユーザー名を入力してください"
+                            onChange={(e) => setUsername(e.target.value)}
+                            className="flex-1 text-white h-full focus:outline-none pl-2"
+                        />
+                    </div>
+                    {userData && userData.login !== "RyutaC2" && notFound === false && (
+                        <p className="text-white whitespace-normal sm:whitespace-pre">
+                            Login: {userData.login}                  Name: {userData.name || userData.login}<br/>
+                            Directory: /home/{userData.login}        Shell: /bin/bash<br/>
+                            On since {userData ? new Date(userData.created_at).toLocaleString("en-US", {
+                                weekday: "short",
+                                month: "long",
+                                day: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                hour12: false,
+                            }).replace(/,/g, "").replace(/ at/g, "") : "N/A"}<br/>
+                            (JST) on :pts/0 from :185.199.108.153 (messages off)<br/>
+                        {userData?.email ? `Mail: ${userData.email}` : "No mail."}<br/>
+                        No Plan.<br/>
+                        </p>
+                    )}
+                    {notFound && (
+                        <p className="text-red-500">
+                            ユーザーが見つかりませんでした。ユーザー名を確認してください。
+                        </p>
+                    )}
+                </label>
             </form>
 
             <button onClick={handleSearch} className="w-full center rounded-md text-xl text-white bg-green-500 hover:bg-green-700 active:bg-green-700 dark:bg-green-700 dark:hover:bg-green-500 dark:active:bg-green-500 cursor-pointer py-2 mt-1">
                 ユーザーを検索
             </button>
 
-            <p className="my-6">上のシェルにユーザ名を入力すると、GitHubのプロフィール情報を取得できます。</p>
+            <p className="my-6 text-center text-gray-500">上のシェルにユーザ名を入力し検索すると、GitHubのプロフィール情報を取得できます。</p>
             
             <div className="h-full w-full">
                 {userData && (
