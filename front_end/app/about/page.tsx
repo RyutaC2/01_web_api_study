@@ -284,6 +284,7 @@ export default function AboutPage() {
                     </article>
                 )}
             </div>
+            <p className="text-center text-xl mt-6">Powered by GitHub API</p>
         </>
     )
 }
