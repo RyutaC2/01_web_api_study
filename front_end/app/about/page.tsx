@@ -34,7 +34,7 @@ export default function AboutPage() {
     return (
         <div>
             <form className="flex flex-col font-mono gap-2 bg-[#282c34] border-2 border-[#1d1f23] rounded-xl p-4 pb-10 my-8">
-                <label className="text-white whitespace-pre">
+                <label className="text-white whitespace-normal sm:whitespace-pre">
                     ~ $ <span className="text-green-700">whoami</span><br/>
                     RyutaC2<br/><br/>
                     ~ $ <span className="text-green-700">finger</span> RyutaC2<br/>
@@ -62,12 +62,12 @@ export default function AboutPage() {
             
             <div className="h-full w-full">
                 {userData && (
-                    <div className="flex flex-col gap-4 rounded-xl bg-gray-100 border-2 border-gray-300 p-4 mt-8">
+                    <div className="flex flex-col gap-4 rounded-xl bg-gray-100 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 p-4 mt-8">
                         <div className="flex gap-4">
-                            <img src={userData.avatar_url} alt={userData.name} width="100" height="100" className="rounded-full"/>
+                            <img src={userData.avatar_url} alt={userData.name} width="100" height="100" className="aspect-square rounded-full shrink-0 object-cover self-start"/>
                             <div className="flex flex-col justify-center">
                                 <h2 className="text-3xl font-bold">{userData.name}</h2>
-                                <p className="text-gray-600">@{userData.login}</p>
+                                <p className="text-gray-600 dark:text-gray-400">@{userData.login}</p>
                                 <p className="pt-2">{userData.bio}</p>
                             </div>
                         </div>
