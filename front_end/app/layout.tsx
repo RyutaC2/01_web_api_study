@@ -65,7 +65,7 @@ export default function RootLayout({
         </main>
           <AIChat/>
           <JavaScriptDisabled/>
-        <footer className="flex gap-4 justify-content mt-auto p-6 text-white text-center bg-[#333]">
+        <footer className="flex gap-4 justify-center mt-auto p-6 text-white text-center bg-[#333]">
           <small className="select-none">
             © 2026 RyutaC2. All rights reserved.
           </small>
