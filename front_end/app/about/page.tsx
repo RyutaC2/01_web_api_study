@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface UserData {
@@ -39,38 +39,38 @@ interface RepoData {
 
 export default function AboutPage() {
     const [username, setUsername] = useState("");
+    const [searchTarget, setSearchTarget] = useState("RyutaC2");
     const [userData, setUserData] = useState<UserData | null>(null);
     const [reposData, setReposData] = useState<RepoData[]>([]);
     const [notFound, setNotFound] = useState(false);
 
-    const fetchUser = useCallback(async (targetName: string) => {
-        try {
-            const user_res = await fetch(`https://api.github.com/users/${targetName}`);
-            const repos_res = await fetch(`https://api.github.com/users/${targetName}/repos`);
-            if (user_res.ok && repos_res.ok) {
-                const userData = await user_res.json();
-                const reposData = await repos_res.json();
-                setUserData(userData);
-                setReposData(reposData);
-                setNotFound(false);
-            } else {
+    useEffect(() => {
+        async function loadUser() {
+            try {
+                const user_res = await fetch(`https://api.github.com/users/${searchTarget}`);
+                const repos_res = await fetch(`https://api.github.com/users/${searchTarget}/repos`);
+                if (user_res.ok && repos_res.ok) {
+                    const userData = await user_res.json();
+                    const reposData = await repos_res.json();
+                    setUserData(userData);
+                    setReposData(reposData);
+                    setNotFound(false);
+                } else {
+                    setNotFound(true);
+                    setUserData(null);
+                }
+            } catch (e) {
+                console.error(e);
                 setNotFound(true);
                 setUserData(null);
             }
-        } catch (e) {
-            console.error(e);
-            setNotFound(true);
-            setUserData(null);
         }
-    }, []);
+        loadUser();
+    }, [searchTarget]);
 
-    useEffect(() => {
-        fetchUser("RyutaC2");
-    }, [fetchUser]);
-    
     const handleSearch = () => {
         const target = username === "" ? "RyutaC2" : username;
-        fetchUser(target);
+        setSearchTarget(target);
     };
 
     return (
