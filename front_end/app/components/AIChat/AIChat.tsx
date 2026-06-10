@@ -4,7 +4,7 @@ import Tooltip from "../UI/Tooltip";
 
 export default function AIChat() {
     return (
-        <div className="sticky bottom-0 flex justify-end z-50">
+        <div className="sticky bottom-0 flex justify-end z-50 m-">
             <Tooltip text="AIチャットを開く" position="top-left">
                 <button
                     className="

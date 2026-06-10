@@ -1,7 +1,11 @@
+import Terminal from "@/app/components/UI/terminal";
+
 export default function ContactPage() {
     return (
-        <div>
-            <h1>連絡フォームページです！！！！</h1>
-        </div>
+        <>
+            <Terminal title="Contact Form">
+                <h1>連絡フォームページです！！！！</h1>
+            </Terminal>
+        </>
     )
 }
