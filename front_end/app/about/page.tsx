@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Section from "@/app/components/UI/Section";
 import Terminal from "@/app/components/UI/terminal";
+import GoogleIcon from "@/app/components/UI/GoogleIcon";
 
 interface UserData {
     login: string;
@@ -156,7 +157,10 @@ export default function AboutPage() {
                             </div>
                         </Section>
                         <Section>
-                            <h3 className="text-2xl font-bold">GitHub Stats</h3>
+                            <h2 className="flex items-center text-2xl font-bold">
+                                <GoogleIcon id="insert_chart" />
+                                GitHub Stats
+                            </h2>
                             <div className="flex flex-col md:flex-row gap-8">
                                 <ul className="md:w-1/2 list-none">
                                     <li>Location： {userData.location ? userData.location : "未設定"}</li>
@@ -183,16 +187,19 @@ export default function AboutPage() {
                             </div>
                         </Section>
                         <Section>
-                            <h3 className="text-2xl font-bold">Public Repositories</h3>
+                            <h2 className="flex items-center text-2xl font-bold">
+                                <GoogleIcon id="public" />
+                                Public Repositories
+                            </h2>
                             {userData.public_repos === 0 ? (
                                 <p className="py-2">{userData.login} さんは公開リポジトリを持っていません。</p>
                             ) : (
                                 <ul className="list-none space-y-2">
                                     {reposData.map((repo) => (
                                         <li key={repo.id} className="border border-gray-300 dark:border-gray-600 rounded-xl p-3">
-                                            <div className="flex items-center mb-1">
-                                                <span className="material-symbols-outlined mr-1" style={{ fontSize: "24px" }}>book</span>
-                                                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-xl text-blue-600 hover:text-blue-800 dark:text-blue-800 dark:hover:text-blue-600 transition font-bold break-all">
+                                            <div className="mb-1">
+                                                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center text-xl text-blue-600 hover:text-blue-800 dark:text-blue-800 dark:hover:text-blue-600 transition font-bold break-all">
+                                                    <span className="material-symbols-outlined mr-1" style={{ fontSize: "24px" }}>book</span>
                                                     {repo.name}
                                                 </a>
                                             </div>
@@ -214,33 +221,33 @@ export default function AboutPage() {
                                             <div className="flex flex-col md:flex-row gap-4">
                                                 <ul className="md:w-1/2 list-none mt-2">
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>code_xml</span>
+                                                        <GoogleIcon id="code_xml" />
                                                         Language： {repo.language || "不明"}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>star</span>
+                                                        <GoogleIcon id="star" />
                                                         Stars： {repo.stargazers_count}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>family_history</span>
+                                                        <GoogleIcon id="family_history" />
                                                         Forks： {repo.forks_count}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>visibility</span>
+                                                        <GoogleIcon id="visibility" />
                                                         Watchers： {repo.watchers_count}
                                                     </li>
                                                 </ul>
                                                 <ul className="md:w-1/2 list-none mt-2">
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>bug_report</span>
+                                                        <GoogleIcon id="bug_report" />
                                                         Open Issues： {repo.open_issues_count}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>copyright</span>
+                                                        <GoogleIcon id="copyright" />
                                                         License： {repo.license ? repo.license.name : "未設定"}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>update</span>
+                                                        <GoogleIcon id="update" />
                                                         Updated at： {new Date(repo.updated_at).toLocaleString("ja-JP", {
                                                             year: "numeric",
                                                             month: "long",
@@ -252,7 +259,7 @@ export default function AboutPage() {
                                                         })}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>create</span>
+                                                        <GoogleIcon id="create" />
                                                         Created at： {new Date(repo.created_at).toLocaleString("ja-JP", {
                                                             year: "numeric",
                                                             month: "long",
