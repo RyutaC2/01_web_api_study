@@ -26,7 +26,11 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${isDark ? "dark" : "light"} bg-[#333] scroll-smooth antialiased`} data-scroll-behavior="smooth">
       <head>
-        <title>my-data-repository</title>
+        <title>01_web_api_study</title>
+        <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
       </head>
       <body className="flex flex-col min-h-screen h-full font-sans text-[#101010] dark:text-[#e2e2e2] bg-[#e2e2e2] dark:bg-[#101010]">
         <header className="z-10 h-16 md:h-24 grid grid-cols-[1fr_2fr_1fr] items-center p-4 md:p-6 text-white bg-[#333]">
@@ -60,7 +64,7 @@ export default function RootLayout({
         </main>
           <AIChat/>
           <JavaScriptDisabled/>
-        <footer className="z-10 mt-auto p-6 text-white text-center bg-[#333]">
+        <footer className="flex gap-4 justify-content mt-auto p-6 text-white text-center bg-[#333]">
           <small className="select-none">
             © 2026 RyutaC2. All rights reserved.
           </small>
