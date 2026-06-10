@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 
 interface UserData {
     login: string;
@@ -42,7 +43,7 @@ export default function AboutPage() {
     const [reposData, setReposData] = useState<RepoData[]>([]);
     const [notFound, setNotFound] = useState(false);
 
-    const fetchUser = async (targetName: string) => {
+    const fetchUser = useCallback(async (targetName: string) => {
         try {
             const user_res = await fetch(`https://api.github.com/users/${targetName}`);
             const repos_res = await fetch(`https://api.github.com/users/${targetName}/repos`);
@@ -61,11 +62,11 @@ export default function AboutPage() {
             setNotFound(true);
             setUserData(null);
         }
-    };
+    }, []);
 
     useEffect(() => {
         fetchUser("RyutaC2");
-    }, []);
+    }, [fetchUser]);
     
     const handleSearch = () => {
         const target = username === "" ? "RyutaC2" : username;
@@ -140,7 +141,7 @@ export default function AboutPage() {
                     <article>
                         <section className="flex flex-col gap-4 rounded-xl bg-gray-100 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 p-4">
                             <div className="flex gap-4">
-                                <img src={userData.avatar_url} alt={userData.name ?? userData.login} width="100" height="100" className="aspect-square rounded-full shrink-0 object-cover self-start"/>
+                                <Image src={userData.avatar_url} alt={userData.name ?? userData.login} width={100} height={100} className="aspect-square rounded-full shrink-0 object-cover self-start"/>
                                 <div className="flex flex-col justify-center">
                                     <a href={userData.html_url} target="_blank" rel="noopener noreferrer" className="text-3xl font-bold">
                                         {userData.name ? userData.name : userData.login}
