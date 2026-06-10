@@ -50,8 +50,10 @@ export default function AboutPage() {
     useEffect(() => {
         async function loadUser() {
             try {
-                const user_res = await fetch(`https://api.github.com/users/${searchTarget}`);
-                const repos_res = await fetch(`https://api.github.com/users/${searchTarget}/repos`);
+                const [user_res, repos_res] = await Promise.all([
+                    fetch(`https://api.github.com/users/${searchTarget}`),
+                    fetch(`https://api.github.com/users/${searchTarget}/repos`)
+                ]);
                 if (user_res.ok && repos_res.ok) {
                     const userData = await user_res.json();
                     const reposData = await repos_res.json();
