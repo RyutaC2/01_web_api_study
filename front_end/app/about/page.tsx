@@ -130,7 +130,7 @@ export default function AboutPage() {
                 </label>
             </form>
 
-            <button onClick={handleSearch} className="w-full center rounded-xl text-xl text-white bg-green-500 hover:bg-green-700 active:bg-green-700 dark:bg-green-700 dark:hover:bg-green-500 dark:active:bg-green-500 cursor-pointer py-2 mt-1">
+            <button onClick={handleSearch} className="w-full text-center rounded-xl text-xl text-white bg-green-500 hover:bg-green-700 active:bg-green-700 dark:bg-green-700 dark:hover:bg-green-500 dark:active:bg-green-500 cursor-pointer py-2 mt-1">
                 ユーザーを検索
             </button>
 
