@@ -5,7 +5,13 @@ export default function ContactPage() {
     return (
         <>
             <Terminal title="Contact Form">
-                <h1>連絡フォームページです！！！！</h1>
+                <p className="text-white whitespace-normal sm:whitespace-pre">
+                    ~ $ <span className="text-green-700">ssh</span> ryuta@contact<br/>
+                    ** WARNING: connection is not using a post-quantum key exchange algorithm.<br/>
+                    ** This session may be vulnerable to "store now, decrypt later" attacks.<br/>
+                    ** The server may need to be upgraded. See https://openssh.com/pq.html<br/>
+                    ryuta@contact's password:<br/>
+                </p>
             </Terminal>
             <br/>
             <Section>

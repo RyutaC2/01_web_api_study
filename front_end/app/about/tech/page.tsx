@@ -1,11 +1,24 @@
 import Terminal from "@/app/components/UI/terminal";
 import Section from "@/app/components/UI/Section";
 
+const prompt_text = ` .my-tech
+frontend:
+    lang: [TypeScript, JavaScript]
+    framework: [React, Next.js]
+    styling: TailwindCSS
+backend:
+    lang: [Python, Go]
+    framework: Echo
+database:
+    - PostgreSQL
+    - DynamoDB`;
+
 export default function TechPage() {
     return (
         <>
             <Terminal title="Tech">
-                <h1>てｃｈページです！！！！</h1>
+                <p className="text-white whitespace-normal sm:whitespace-pre">
+                    {`~ $ `}<span className="text-green-700">cat</span>{prompt_text}</p>
             </Terminal>
             <br/>
             <Section>
