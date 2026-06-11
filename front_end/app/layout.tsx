@@ -65,9 +65,11 @@ export default function RootLayout({
         </main>
           <AIChat/>
           <JavaScriptDisabled/>
-        <footer className="flex gap-4 justify-center mt-auto p-6 text-white text-center bg-[#333]">
-          <small className="select-none">
-            © 2026 RyutaC2. All rights reserved.
+        <footer className="z-10 flex gap-4 justify-center mt-auto p-6 text-white text-center bg-[#333]">
+          <small className="flex flex-col md:flex-row gap-1 md:gap-4 select-none">
+            <p>© 2026 RyutaC2. All rights reserved.</p>
+            <a href="https://github.com/RyutaC2" className="hover:underline hover:text-blue-500 transition-colors duration-200">My GitHub</a>
+            <a href="https://github.com/RyutaC2/01_web_api_study" className="hover:underline hover:text-blue-500 transition-colors duration-200">This Repository</a>
           </small>
         </footer>
       </body>
