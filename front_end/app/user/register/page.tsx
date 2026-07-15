@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import InputField from "../../components/UI/InputField";
 import Link from "next/link";
+import Section from "@/app/components/UI/Section";
 
 const registerSchema = z.object({
     username: z.string()
@@ -37,7 +38,8 @@ export default function Register() {
     }
 
     return (
-        <div className="rounded-2xl bg-[#ffffff] dark:bg-[#303030] md:px-6 py-10 md:mx-4 my-4">
+        
+        <Section>
             <h1 className="text-center text-4xl p-4">ユーザー新規登録</h1>
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -84,6 +86,6 @@ export default function Register() {
                     >登録</button>
                 </div>
             </form>
-        </div>
+        </Section>
     )
 }

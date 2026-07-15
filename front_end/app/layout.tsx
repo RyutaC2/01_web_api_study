@@ -24,13 +24,13 @@ export default function RootLayout({
     return false;
   });
   return (
-    <html lang="ja" className={`${isDark ? "dark" : "light"} bg-[#333] scroll-smooth antialiased`}>
+    <html lang="ja" className={`${isDark ? "dark" : "light"} bg-[#333] scroll-smooth antialiased min-w-100 data-scroll-behavior="smooth"`}>
       <head>
         <title>01_web_api_study</title>
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=optional"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         />
       </head>
       <body className="flex flex-col min-h-screen h-full font-sans text-[#101010] dark:text-[#e2e2e2] bg-[#e2e2e2] dark:bg-[#101010]">
@@ -60,14 +60,16 @@ export default function RootLayout({
             aria-label="サイドバーを閉じる"
           />
         )}
-        <main className="p-3 md:p-6 md:pl-[10%] md:pr-[10%] lg:pl-[15%] lg:pr-[15%] xl:pl-[20%] xl:pr-[20%] 2xl:pl-[30%] 2xl:pr-[30%]">
+        <main className="flex-1 p-3 md:p-6 md:pl-[10%] md:pr-[10%] lg:pl-[15%] lg:pr-[15%] xl:pl-[20%] xl:pr-[20%] 2xl:pl-[30%] 2xl:pr-[30%]">
           {children}
         </main>
           <AIChat/>
           <JavaScriptDisabled/>
-        <footer className="flex gap-4 justify-center mt-auto p-6 text-white text-center bg-[#333]">
-          <small className="select-none">
-            © 2026 RyutaC2. All rights reserved.
+        <footer className="z-10 flex gap-4 justify-center mt-auto p-6 text-white text-center bg-[#333]">
+          <small className="flex flex-col md:flex-row gap-1 md:gap-4 select-none">
+            <p>© 2026 RyutaC2. All rights reserved.</p>
+            <a href="https://github.com/RyutaC2" className="hover:underline hover:text-blue-500 transition-colors duration-200">My GitHub</a>
+            <a href="https://github.com/RyutaC2/01_web_api_study" className="hover:underline hover:text-blue-500 transition-colors duration-200">This Repository</a>
           </small>
         </footer>
       </body>

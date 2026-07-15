@@ -24,7 +24,7 @@ export default function HomePage() {
     }
 
     return (
-        <div className="flex justify-center min-h-screen">
+        <div className="flex justify-center">
             <div className="max-w-150">
                 <h1 className="text-center text-[clamp(2rem,4vw,3rem)] mt-10 px-4 min-[400px]:px-10">圧倒的に簡易的な、<br/>ログインシステムはこちら。</h1>
                 <h2 className="text-center text-[clamp(1rem,2vw,1.35rem)] mt-5 mb-10 px-4 min-[400px]:px-10">フロントエンドはNext.js、バックエンドはGoで構築しています。このページはGitHubのホームページを真似しました。下の登録/ログインシステムはReactHookFormとZodを使っています。</h2>

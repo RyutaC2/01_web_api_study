@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Section from "@/app/components/UI/Section";
+import Terminal from "@/app/components/UI/terminal";
+import GoogleIcon from "@/app/components/UI/GoogleIcon";
 
 interface UserData {
     login: string;
@@ -47,8 +50,10 @@ export default function AboutPage() {
     useEffect(() => {
         async function loadUser() {
             try {
-                const user_res = await fetch(`https://api.github.com/users/${searchTarget}`);
-                const repos_res = await fetch(`https://api.github.com/users/${searchTarget}/repos`);
+                const [user_res, repos_res] = await Promise.all([
+                    fetch(`https://api.github.com/users/${searchTarget}`),
+                    fetch(`https://api.github.com/users/${searchTarget}/repos`)
+                ]);
                 if (user_res.ok && repos_res.ok) {
                     const userData = await user_res.json();
                     const reposData = await repos_res.json();
@@ -75,60 +80,62 @@ export default function AboutPage() {
 
     return (
         <>
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    handleSearch();
-                }}
-                className="flex flex-col font-mono gap-2 bg-[#282c34] border-2 border-[#1d1f23] rounded-xl mt-8"
-            >
-                <label className="w-full h-full cursor-text p-4 pb-10 ">
-                    <p className="text-white whitespace-normal sm:whitespace-pre">
-                        ~ $ <span className="text-green-700">whoami</span><br/>
-                        RyutaC2<br/><br/>
-                        ~ $ <span className="text-green-700">finger</span> RyutaC2<br/>
-                        Login: RyutaC2                  Name: Ryuta Iguchi<br/>
-                        Directory: /home/RyutaC2        Shell: /bin/zsh<br/>
-                        On since Thu June 25 23:06 (JST) on :0 from :0 (messages off)<br/>
-                        No mail.<br/>
-                        No Plan.<br/><br/>
-                    </p>
-                    <div className="flex items-center">
-                        <p className="text-white">
-                            ~ $ <span className="text-green-700">finger</span>
-                        </p>
-                        <input
-                            type="text"
-                            value={username}
-                            placeholder="ユーザー名を入力してください"
-                            onChange={(e) => setUsername(e.target.value)}
-                            className="flex-1 text-white h-full focus:outline-none pl-2"
-                        />
-                    </div>
-                    {userData && userData.login !== "RyutaC2" && notFound === false && (
+            <Terminal title="Whoami">
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSearch();
+                    }}
+                    className="w-full h-full"
+                >
+                    <label className="w-full h-full cursor-text">
                         <p className="text-white whitespace-normal sm:whitespace-pre">
-                            Login: {userData.login}                  Name: {userData.name || userData.login}<br/>
-                            Directory: /home/{userData.login}        Shell: /bin/bash<br/>
-                            On since {userData ? new Date(userData.created_at).toLocaleString("en-US", {
-                                weekday: "short",
-                                month: "long",
-                                day: "numeric",
-                                hour: "2-digit",
-                                minute: "2-digit",
-                                hour12: false,
-                            }).replace(/,/g, "").replace(/ at/g, "") : "N/A"}<br/>
-                            (JST) on :pts/0 from :185.199.108.153 (messages off)<br/>
-                        {userData?.email ? `Mail: ${userData.email}` : "No mail."}<br/>
-                        No Plan.<br/>
+                            ~ $ <span className="text-green-700">whoami</span><br/>
+                            RyutaC2<br/><br/>
+                            ~ $ <span className="text-green-700">finger</span> RyutaC2<br/>
+                            Login: RyutaC2                  Name: Ryuta Iguchi<br/>
+                            Directory: /home/RyutaC2        Shell: /bin/zsh<br/>
+                            On since Thu June 25 23:06 (JST) on :0 from :0 (messages off)<br/>
+                            No mail.<br/>
+                            No Plan.<br/><br/>
                         </p>
-                    )}
-                    {notFound && (
-                        <p className="text-red-500">
-                            ユーザーが見つかりませんでした。ユーザー名を確認してください。
-                        </p>
-                    )}
-                </label>
-            </form>
+                        <div className="flex items-center">
+                            <p className="text-white">
+                                ~ $ <span className="text-green-700">finger</span>
+                            </p>
+                            <input
+                                type="text"
+                                value={username}
+                                placeholder="ユーザー名を入力してください"
+                                onChange={(e) => setUsername(e.target.value)}
+                                className="flex-1 text-white h-full focus:outline-none pl-2"
+                            />
+                        </div>
+                        {userData && userData.login !== "RyutaC2" && notFound === false && (
+                            <p className="text-white whitespace-normal sm:whitespace-pre">
+                                Login: {userData.login}                  Name: {userData.name || userData.login}<br/>
+                                Directory: /home/{userData.login}        Shell: /bin/bash<br/>
+                                On since {userData ? new Date(userData.created_at).toLocaleString("en-US", {
+                                    weekday: "short",
+                                    month: "long",
+                                    day: "numeric",
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                    hour12: false,
+                                }).replace(/,/g, "").replace(/ at/g, "") : "N/A"}<br/>
+                                (JST) on :pts/0 from :185.199.108.153 (messages off)<br/>
+                            {userData?.email ? `Mail: ${userData.email}` : "No mail."}<br/>
+                            No Plan.<br/>
+                            </p>
+                        )}
+                        {notFound && (
+                            <p className="text-red-500">
+                                ユーザーが見つかりませんでした。ユーザー名を確認してください。
+                            </p>
+                        )}
+                    </label>
+                </form>
+            </Terminal>
 
             <button onClick={handleSearch} className="w-full text-center rounded-xl text-xl text-white bg-green-500 hover:bg-green-700 active:bg-green-700 dark:bg-green-700 dark:hover:bg-green-500 dark:active:bg-green-500 cursor-pointer py-2 mt-1">
                 ユーザーを検索
@@ -139,7 +146,7 @@ export default function AboutPage() {
             <div className="h-full w-full">
                 {userData && (
                     <article>
-                        <section className="flex flex-col gap-4 rounded-xl bg-gray-100 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 p-4">
+                        <Section>
                             <div className="flex gap-4">
                                 <Image src={userData.avatar_url} alt={userData.name ?? userData.login} width={100} height={100} className="aspect-square rounded-full shrink-0 object-cover self-start"/>
                                 <div className="flex flex-col justify-center">
@@ -150,9 +157,12 @@ export default function AboutPage() {
                                     <p className="pt-2">{userData.bio}</p>
                                 </div>
                             </div>
-                        </section>
-                        <section className="flex flex-col gap-2 rounded-xl bg-gray-100 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 px-8 py-4 mt-1">
-                            <h3 className="text-2xl font-bold">GitHub Stats</h3>
+                        </Section>
+                        <Section>
+                            <h2 className="flex items-center text-2xl font-bold">
+                                <GoogleIcon id="insert_chart" />
+                                GitHub Stats
+                            </h2>
                             <div className="flex flex-col md:flex-row gap-8">
                                 <ul className="md:w-1/2 list-none">
                                     <li>Location： {userData.location ? userData.location : "未設定"}</li>
@@ -177,18 +187,21 @@ export default function AboutPage() {
                                     <li>Following： {userData.following}</li>
                                 </ul>
                             </div>
-                        </section>
-                        <section className="flex flex-col gap-2 rounded-xl bg-gray-100 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 px-8 py-4 mt-1">
-                            <h3 className="text-2xl font-bold">Public Repositories</h3>
+                        </Section>
+                        <Section>
+                            <h2 className="flex items-center text-2xl font-bold">
+                                <GoogleIcon id="public" />
+                                Public Repositories
+                            </h2>
                             {userData.public_repos === 0 ? (
                                 <p className="py-2">{userData.login} さんは公開リポジトリを持っていません。</p>
                             ) : (
                                 <ul className="list-none space-y-2">
                                     {reposData.map((repo) => (
                                         <li key={repo.id} className="border border-gray-300 dark:border-gray-600 rounded-xl p-3">
-                                            <div className="flex items-center mb-1">
-                                                <span className="material-symbols-outlined mr-1" style={{ fontSize: "24px" }}>book</span>
-                                                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-xl text-blue-600 hover:text-blue-800 dark:text-blue-800 dark:hover:text-blue-600 transition font-bold break-all">
+                                            <div className="mb-1">
+                                                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center text-xl text-blue-600 hover:text-blue-800 dark:text-blue-800 dark:hover:text-blue-600 transition font-bold break-all">
+                                                    <span className="material-symbols-outlined mr-1" style={{ fontSize: "24px" }}>book</span>
                                                     {repo.name}
                                                 </a>
                                             </div>
@@ -210,33 +223,33 @@ export default function AboutPage() {
                                             <div className="flex flex-col md:flex-row gap-4">
                                                 <ul className="md:w-1/2 list-none mt-2">
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>code_xml</span>
+                                                        <GoogleIcon id="code_xml" />
                                                         Language： {repo.language || "不明"}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>star</span>
+                                                        <GoogleIcon id="star" />
                                                         Stars： {repo.stargazers_count}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>family_history</span>
+                                                        <GoogleIcon id="family_history" />
                                                         Forks： {repo.forks_count}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>visibility</span>
+                                                        <GoogleIcon id="visibility" />
                                                         Watchers： {repo.watchers_count}
                                                     </li>
                                                 </ul>
                                                 <ul className="md:w-1/2 list-none mt-2">
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>bug_report</span>
+                                                        <GoogleIcon id="bug_report" />
                                                         Open Issues： {repo.open_issues_count}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>copyright</span>
+                                                        <GoogleIcon id="copyright" />
                                                         License： {repo.license ? repo.license.name : "未設定"}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>update</span>
+                                                        <GoogleIcon id="update" />
                                                         Updated at： {new Date(repo.updated_at).toLocaleString("ja-JP", {
                                                             year: "numeric",
                                                             month: "long",
@@ -248,7 +261,7 @@ export default function AboutPage() {
                                                         })}
                                                     </li>
                                                     <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                                        <span className="material-symbols-outlined mr-1" style={{ fontSize: "16px" }}>create</span>
+                                                        <GoogleIcon id="create" />
                                                         Created at： {new Date(repo.created_at).toLocaleString("ja-JP", {
                                                             year: "numeric",
                                                             month: "long",
@@ -265,7 +278,7 @@ export default function AboutPage() {
                                     ))}
                                 </ul>
                             )}
-                        </section>
+                        </Section>
                     </article>
                 )}
             </div>
